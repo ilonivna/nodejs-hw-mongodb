@@ -9,16 +9,17 @@ const PORT = Number(env('PORT', 3000));
 export const setupServer = () => {
     const app = express();
 
-    // app.use(express.json());
-    app.use(cors());
+    app.use(express.json());
+
 
     app.use(
         pino({
-        transport: {
+          transport: {
             target: 'pino-pretty',
-      },
-        })
-    );
+          },
+        }),
+      );
+  app.use(cors());
 
     app.get('/', (req, res) => {
         res.json({
