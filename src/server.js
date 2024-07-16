@@ -9,7 +9,8 @@ const PORT = Number(env('PORT', 3000));
 export const setupServer = () => {
     const app = express();
 
-    app.use(express.json());
+  app.use(express.json());
+   app.use(cors());
 
 
     app.use(
@@ -19,7 +20,7 @@ export const setupServer = () => {
           },
         }),
       );
-  app.use(cors());
+
 
     app.get('/', (req, res) => {
         res.json({
@@ -35,25 +36,29 @@ export const setupServer = () => {
   });
 
   app.get('/contacts/:contactId', async (req, res) => {
-    const { contactId } = req.params;
+    const {contactId} = req.params;
     const contact = await getContactsById(contactId);
     if (!contact) {
       res.status(404).json({
         message: 'Contact not found'
       });
+    }
 
-      res.status(200).json({
+     res.status(200).json({
         data: contact,
       });
-    }
   });
 
-    app.use('*', (req, res) => {
+  app.use('*', (req, res) => {
     res.status(404).json({
       message: 'Not found',
     });
 
-    app.use((err, req, res) => {
+
+
+    });
+
+  app.use((err, req, res) => {
     res.status(500).json({
       message: 'Something went wrong',
       error: err.message,
@@ -64,8 +69,6 @@ export const setupServer = () => {
     console.log(`Server is running on port ${PORT}`);
   });
 
-
-  });
 
 
 
