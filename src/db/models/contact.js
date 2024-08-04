@@ -1,6 +1,12 @@
+
 import { Schema, model } from "mongoose";
 
-const contactsSchema = new Schema({
+const contactsSchema = new Schema(
+    {
+    userId: {
+        type: String,
+        required: true,
+    },
     name: {
         type: String,
         required: true,
@@ -23,9 +29,11 @@ const contactsSchema = new Schema({
         required: true,
         default: 'personal',
     }
-},{
+    },
+    {
         timestamps: true,
-      },);
+    },
+);
 
 
 export const ContactsCollection = model('contacts', contactsSchema);
