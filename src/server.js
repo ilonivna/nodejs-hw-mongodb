@@ -2,6 +2,8 @@ import express from 'express';
 import pino from "pino-http";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
+
+
 import { env } from './utils/env.js';
 import router from "./routers/index.js";
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
@@ -26,11 +28,11 @@ export const setupServer = () => {
       );
 
 
-  app.get('/', (req, res) => {
-        res.json({
-            message: 'Hello World!'
-        });
-    });
+  // app.get('/', (req, res) => {
+  //       res.json({
+  //           message: 'Hello World!'
+  //       });
+  //   });
 
   app.use(router);
 
