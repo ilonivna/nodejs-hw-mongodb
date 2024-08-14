@@ -5,7 +5,7 @@ import { parseSortParams } from "../utils/parseSortParams.js";
 import { parseFilterParams } from "../utils/parseFilterParams.js";
 import { saveFileToUploadDir } from "../utils/saveFileToUploadDir.js";
 import { saveFileToCloudinary } from "../utils/saveFileToCloudinary.js";
-
+import { env } from "../utils/env.js";
 
 
 export const getContactsController = async (req, res) => {
@@ -48,7 +48,18 @@ export const getContactsByIdController = async (req, res) => {
   };
 
 export const createContactController = async (req, res) => {
-    const contact = await createContact(req.body, req.user._id);
+
+    const photo = req.file;
+    let photoUrl;
+    if (photo) {
+        if (env('ENABLE_CLOUDINARY') === 'true') {
+            photoUrl = await saveFileToCloudinary(photo);
+        } else {
+            photoUrl = await saveFileToUploadDir(photo);
+        }
+    }
+
+    const contact = await createContact({ ...req.body, photo: photoUrl }, req.user._id, );
 
     res.status(201).json({
         status: 201,
@@ -90,9 +101,7 @@ export const upsertContactController = async (req, res, next) => {
 export const patchContactController = async (req, res, next) => {
     const { contactId } = req.params;
     const photo = req.file;
-
     let photoUrl;
-
     if (photo) {
         if (env('ENABLE_CLOUDINARY') === 'true') {
             photoUrl = await saveFileToCloudinary(photo);
@@ -100,7 +109,6 @@ export const patchContactController = async (req, res, next) => {
             photoUrl = await saveFileToUploadDir(photo);
         }
     }
-
 
     const result = await updateContact(contactId, req.user._id, { ...req.body, photo: photoUrl });
 
