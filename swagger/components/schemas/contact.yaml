@@ -1,0 +1,40 @@
+type: object
+required:
+  - _id
+  - name
+  - phoneNumber
+  - contactType
+  - userId
+properties:
+  _id:
+    description: 'Contact id'
+    type: string
+    example: 65e4decdd286b30065d54af9
+  name:
+    description: 'Contact name'
+    type: string
+    example: 'Anna Kim'
+  phoneNumber:
+    description: 'Contact phone number'
+    type: string
+    example: '123456789'
+  contactType:
+    description: 'Contact type'
+    type: string
+    enum: ['work', 'home', 'personal']
+  userId:
+    description: 'Contact owner id'
+    type: string
+    example: 65e4decdd286b30065d54af9
+  isFavorite:
+    description: 'Whether contact is favorite'
+    type: boolean
+    example: true
+  email:
+    description: 'Contact email'
+    type: string
+    example: 'example@i.ua'
+  photo:
+    description: 'Link to contact photo'
+    type: string
+    example: 'https://www.shutterstock.com/shutterstock/photos/2470054451/display_1500/stock-photo-a-cat-with-a-yellow-face-is-sitting-on-a-white-background-the-cat-has-a-very-cute-and-friendly-2470054451.jpg'
