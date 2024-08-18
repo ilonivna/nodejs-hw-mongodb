@@ -4,7 +4,6 @@ required:
   - name
   - phoneNumber
   - contactType
-  - userId
 properties:
   _id:
     description: 'Contact id'
@@ -22,10 +21,6 @@ properties:
     description: 'Contact type'
     type: string
     enum: ['work', 'home', 'personal']
-  userId:
-    description: 'Contact owner id'
-    type: string
-    example: 65e4decdd286b30065d54af9
   isFavorite:
     description: 'Whether contact is favorite'
     type: boolean

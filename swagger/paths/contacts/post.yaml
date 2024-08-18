@@ -28,10 +28,6 @@ requestBody:
             description: 'Type of contact'
             type: string
             enum: ['work', 'home', 'personal']
-          userId:
-            description: 'Contact owner id'
-            type: string
-            example: 65e4decdd286b30065d54af9
           isFavorite:
             description: 'Whether contact is favorite'
             type: boolean
