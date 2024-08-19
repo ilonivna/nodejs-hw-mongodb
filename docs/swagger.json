@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "http://example.com"
+      "url": "https://hw7-swagger-forv.onrender.com"
     }
   ],
   "tags": [
@@ -188,8 +188,7 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "contactType",
-                  "userId"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -210,11 +209,6 @@
                       "home",
                       "personal"
                     ]
-                  },
-                  "userId": {
-                    "description": "Contact owner id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
                   },
                   "isFavorite": {
                     "description": "Whether contact is favorite",
@@ -359,12 +353,6 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "name",
-                  "phoneNumber",
-                  "contactType",
-                  "userId"
-                ],
                 "properties": {
                   "name": {
                     "description": "Contact name",
@@ -384,11 +372,6 @@
                       "home",
                       "personal"
                     ]
-                  },
-                  "userId": {
-                    "description": "Contact owner id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
                   },
                   "isFavorite": {
                     "description": "Whether contact is favorite",
@@ -514,8 +497,7 @@
           "_id",
           "name",
           "phoneNumber",
-          "contactType",
-          "userId"
+          "contactType"
         ],
         "properties": {
           "_id": {
@@ -541,11 +523,6 @@
               "home",
               "personal"
             ]
-          },
-          "userId": {
-            "description": "Contact owner id",
-            "type": "string",
-            "example": "65e4decdd286b30065d54af9"
           },
           "isFavorite": {
             "description": "Whether contact is favorite",
