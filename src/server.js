@@ -30,11 +30,10 @@ export const setupServer = () => {
       );
 
 
-  // app.get('/', (req, res) => {
-  //       res.json({
-  //           message: 'Hello World!'
-  //       });
-  //   });
+  app.get('/', (req, res) => {
+     res.json({message: 'Hello World, this is my first Data Base!'
+        });
+    });
 
   app.use(router);
 
